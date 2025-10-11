@@ -1,0 +1,395 @@
+{% extends "base.html" %}
+
+{% block title %}Learning Analytics Dashboard - ScholarMate{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center mb-8">
+        <div>
+            <h1 class="text-3xl font-bold text-white">Learning Analytics Dashboard</h1>
+            <p class="text-gray-400 mt-2">Comprehensive insights into your learning journey</p>
+        </div>
+        <div class="flex space-x-4">
+            <select id="timeRange" class="bg-gray-700 text-white px-4 py-2 rounded-lg border border-gray-600">
+                <option value="7">Last 7 days</option>
+                <option value="30" selected>Last 30 days</option>
+                <option value="90">Last 90 days</option>
+                <option value="365">Last year</option>
+            </select>
+            <button onclick="refreshData()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg">
+                <i class="fas fa-sync-alt mr-2"></i>Refresh
+            </button>
+        </div>
+    </div>
+
+    <!-- Key Metrics Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div class="bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg p-6 shadow-lg">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-blue-200 text-sm font-medium">Total Sessions</p>
+                    <p class="text-white text-3xl font-bold mt-2" id="totalSessions">0</p>
+                    <p class="text-blue-200 text-xs mt-2">
+                        <span id="sessionsChange" class="font-semibold">+0%</span> from last period
+                    </p>
+                </div>
+                <div class="bg-blue-500 bg-opacity-30 rounded-full p-3">
+                    <i class="fas fa-book-reader text-white text-2xl"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-gradient-to-br from-green-600 to-green-800 rounded-lg p-6 shadow-lg">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-green-200 text-sm font-medium">Quizzes Completed</p>
+                    <p class="text-white text-3xl font-bold mt-2" id="totalQuizzes">0</p>
+                    <p class="text-green-200 text-xs mt-2">
+                        <span id="quizzesChange" class="font-semibold">+0%</span> from last period
+                    </p>
+                </div>
+                <div class="bg-green-500 bg-opacity-30 rounded-full p-3">
+                    <i class="fas fa-clipboard-check text-white text-2xl"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-gradient-to-br from-purple-600 to-purple-800 rounded-lg p-6 shadow-lg">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-purple-200 text-sm font-medium">Average Score</p>
+                    <p class="text-white text-3xl font-bold mt-2" id="avgScore">0%</p>
+                    <p class="text-purple-200 text-xs mt-2">
+                        <span id="scoreChange" class="font-semibold">+0%</span> from last period
+                    </p>
+                </div>
+                <div class="bg-purple-500 bg-opacity-30 rounded-full p-3">
+                    <i class="fas fa-chart-line text-white text-2xl"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-gradient-to-br from-orange-600 to-orange-800 rounded-lg p-6 shadow-lg">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-orange-200 text-sm font-medium">Time Spent</p>
+                    <p class="text-white text-3xl font-bold mt-2" id="totalTime">0h</p>
+                    <p class="text-orange-200 text-xs mt-2">
+                        <span id="timeChange" class="font-semibold">+0%</span> from last period
+                    </p>
+                </div>
+                <div class="bg-orange-500 bg-opacity-30 rounded-full p-3">
+                    <i class="fas fa-clock text-white text-2xl"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Charts Row -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+        <!-- Performance Over Time -->
+        <div class="bg-gray-800 rounded-lg shadow-lg p-6">
+            <h2 class="text-xl font-bold text-white mb-4">Performance Trend</h2>
+            <div id="performanceChart" style="height: 300px;"></div>
+        </div>
+
+        <!-- Subject Distribution -->
+        <div class="bg-gray-800 rounded-lg shadow-lg p-6">
+            <h2 class="text-xl font-bold text-white mb-4">Subject Distribution</h2>
+            <div id="subjectChart" style="height: 300px;"></div>
+        </div>
+    </div>
+
+    <!-- Mastery Levels -->
+    <div class="bg-gray-800 rounded-lg shadow-lg p-6 mb-8">
+        <h2 class="text-xl font-bold text-white mb-6">Mastery Levels by Topic</h2>
+        <div id="masteryLevels" class="space-y-4">
+            <!-- Dynamically populated -->
+        </div>
+    </div>
+
+    <!-- Strengths and Weaknesses -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+        <!-- Strengths -->
+        <div class="bg-gray-800 rounded-lg shadow-lg p-6">
+            <div class="flex items-center mb-4">
+                <div class="bg-green-600 rounded-full p-2 mr-3">
+                    <i class="fas fa-trophy text-white"></i>
+                </div>
+                <h2 class="text-xl font-bold text-white">Strengths</h2>
+            </div>
+            <ul id="strengthsList" class="space-y-2">
+                <!-- Dynamically populated -->
+            </ul>
+        </div>
+
+        <!-- Needs Review -->
+        <div class="bg-gray-800 rounded-lg shadow-lg p-6">
+            <div class="flex items-center mb-4">
+                <div class="bg-yellow-600 rounded-full p-2 mr-3">
+                    <i class="fas fa-exclamation-triangle text-white"></i>
+                </div>
+                <h2 class="text-xl font-bold text-white">Needs Review</h2>
+            </div>
+            <ul id="reviewList" class="space-y-2">
+                <!-- Dynamically populated -->
+            </ul>
+        </div>
+
+        <!-- Weaknesses -->
+        <div class="bg-gray-800 rounded-lg shadow-lg p-6">
+            <div class="flex items-center mb-4">
+                <div class="bg-red-600 rounded-full p-2 mr-3">
+                    <i class="fas fa-times-circle text-white"></i>
+                </div>
+                <h2 class="text-xl font-bold text-white">Needs Improvement</h2>
+            </div>
+            <ul id="weaknessesList" class="space-y-2">
+                <!-- Dynamically populated -->
+            </ul>
+        </div>
+    </div>
+
+    <!-- Recommended Learning Path -->
+    <div class="bg-gray-800 rounded-lg shadow-lg p-6">
+        <h2 class="text-xl font-bold text-white mb-6">Recommended Learning Path</h2>
+        <div id="learningPath" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <!-- Dynamically populated -->
+        </div>
+    </div>
+</div>
+
+<!-- Include Plotly for visualizations -->
+<script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+
+<script>
+let currentData = null;
+
+// Load analytics data
+async function loadAnalytics() {
+    const days = document.getElementById('timeRange').value;
+    
+    try {
+        const response = await fetch(`/api/analytics/progress?days=${days}`);
+        const data = await response.json();
+        
+        if (data.success) {
+            currentData = data;
+            updateDashboard(data);
+        } else {
+            console.error('Error loading analytics:', data.error);
+        }
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+function updateDashboard(data) {
+    // Update key metrics
+    document.getElementById('totalSessions').textContent = data.summary.total_sessions;
+    document.getElementById('totalQuizzes').textContent = data.summary.total_quizzes;
+    document.getElementById('totalTime').textContent = data.summary.total_time_hours + 'h';
+    
+    // Calculate average score across all subjects
+    const subjects = Object.values(data.by_subject);
+    const avgScore = subjects.length > 0 
+        ? subjects.reduce((sum, s) => sum + s.avg_score, 0) / subjects.length 
+        : 0;
+    document.getElementById('avgScore').textContent = (avgScore * 100).toFixed(1) + '%';
+    
+    // Update charts
+    updatePerformanceChart(data);
+    updateSubjectChart(data);
+    updateMasteryLevels(data);
+    updateStrengthsWeaknesses(data);
+}
+
+function updatePerformanceChart(data) {
+    // Sample data - in production, this would come from time-series data
+    const trace = {
+        x: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+        y: [65, 72, 78, 85],
+        type: 'scatter',
+        mode: 'lines+markers',
+        line: {
+            color: '#3B82F6',
+            width: 3
+        },
+        marker: {
+            size: 8,
+            color: '#3B82F6'
+        }
+    };
+    
+    const layout = {
+        paper_bgcolor: 'rgba(0,0,0,0)',
+        plot_bgcolor: 'rgba(0,0,0,0)',
+        font: {
+            color: '#E5E7EB'
+        },
+        xaxis: {
+            gridcolor: '#374151'
+        },
+        yaxis: {
+            gridcolor: '#374151',
+            range: [0, 100],
+            title: 'Average Score (%)'
+        },
+        margin: {
+            l: 50,
+            r: 20,
+            t: 20,
+            b: 40
+        }
+    };
+    
+    Plotly.newPlot('performanceChart', [trace], layout, {responsive: true});
+}
+
+function updateSubjectChart(data) {
+    const subjects = Object.keys(data.by_subject);
+    const sessions = subjects.map(s => data.by_subject[s].sessions);
+    
+    const trace = {
+        labels: subjects.map(s => s.charAt(0).toUpperCase() + s.slice(1)),
+        values: sessions,
+        type: 'pie',
+        marker: {
+            colors: ['#3B82F6', '#10B981', '#F59E0B', '#EF4444']
+        },
+        textinfo: 'label+percent',
+        textfont: {
+            color: '#FFFFFF'
+        }
+    };
+    
+    const layout = {
+        paper_bgcolor: 'rgba(0,0,0,0)',
+        plot_bgcolor: 'rgba(0,0,0,0)',
+        font: {
+            color: '#E5E7EB'
+        },
+        showlegend: true,
+        legend: {
+            font: {
+                color: '#E5E7EB'
+            }
+        },
+        margin: {
+            l: 20,
+            r: 20,
+            t: 20,
+            b: 20
+        }
+    };
+    
+    Plotly.newPlot('subjectChart', [trace], layout, {responsive: true});
+}
+
+function updateMasteryLevels(data) {
+    const container = document.getElementById('masteryLevels');
+    container.innerHTML = '';
+    
+    // Sample mastery data - in production, fetch from API
+    const masteryData = [
+        { topic: 'Algebra', level: 0.85, subject: 'mathematics' },
+        { topic: 'Calculus', level: 0.65, subject: 'mathematics' },
+        { topic: 'Mechanics', level: 0.75, subject: 'physics' },
+        { topic: 'Thermodynamics', level: 0.45, subject: 'physics' }
+    ];
+    
+    masteryData.forEach(item => {
+        const percentage = (item.level * 100).toFixed(0);
+        const color = item.level >= 0.8 ? 'green' : item.level >= 0.5 ? 'yellow' : 'red';
+        
+        const html = `
+            <div class="flex items-center justify-between">
+                <div class="flex-1">
+                    <div class="flex justify-between mb-2">
+                        <span class="text-gray-300 font-medium">${item.topic}</span>
+                        <span class="text-gray-400 text-sm">${percentage}%</span>
+                    </div>
+                    <div class="w-full bg-gray-700 rounded-full h-2.5">
+                        <div class="bg-${color}-600 h-2.5 rounded-full" style="width: ${percentage}%"></div>
+                    </div>
+                </div>
+                <button onclick="viewTopicDetails('${item.subject}', '${item.topic}')" 
+                        class="ml-4 text-blue-400 hover:text-blue-300">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        `;
+        container.innerHTML += html;
+    });
+}
+
+function updateStrengthsWeaknesses(data) {
+    // Strengths
+    const strengthsList = document.getElementById('strengthsList');
+    strengthsList.innerHTML = '';
+    
+    if (data.strengths && data.strengths.length > 0) {
+        data.strengths.forEach(topic => {
+            strengthsList.innerHTML += `
+                <li class="flex items-center text-green-300">
+                    <i class="fas fa-check-circle mr-2"></i>
+                    <span>${topic}</span>
+                </li>
+            `;
+        });
+    } else {
+        strengthsList.innerHTML = '<li class="text-gray-400">Keep learning to build strengths!</li>';
+    }
+    
+    // Needs Review
+    const reviewList = document.getElementById('reviewList');
+    reviewList.innerHTML = '';
+    
+    if (data.needs_review && data.needs_review.length > 0) {
+        data.needs_review.forEach(topic => {
+            reviewList.innerHTML += `
+                <li class="flex items-center text-yellow-300">
+                    <i class="fas fa-exclamation-circle mr-2"></i>
+                    <span>${topic}</span>
+                </li>
+            `;
+        });
+    } else {
+        reviewList.innerHTML = '<li class="text-gray-400">No topics need review</li>';
+    }
+    
+    // Weaknesses
+    const weaknessesList = document.getElementById('weaknessesList');
+    weaknessesList.innerHTML = '';
+    
+    if (data.weaknesses && data.weaknesses.length > 0) {
+        data.weaknesses.forEach(topic => {
+            weaknessesList.innerHTML += `
+                <li class="flex items-center text-red-300">
+                    <i class="fas fa-times-circle mr-2"></i>
+                    <span>${topic}</span>
+                </li>
+            `;
+        });
+    } else {
+        weaknessesList.innerHTML = '<li class="text-gray-400">Great! No weak areas</li>';
+    }
+}
+
+function viewTopicDetails(subject, topic) {
+    window.location.href = `/analytics/topic/${subject}/${topic}`;
+}
+
+function refreshData() {
+    loadAnalytics();
+}
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', function() {
+    loadAnalytics();
+    
+    // Reload when time range changes
+    document.getElementById('timeRange').addEventListener('change', loadAnalytics);
+});
+</script>
+{% endblock %}
