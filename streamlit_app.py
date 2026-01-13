@@ -191,7 +191,7 @@ def get_user_stats(user_id):
 # AI Tutor function
 def get_ai_response(subject, topic, question, grade_level, curriculum):
     """Get AI response from Groq"""
-    groq_api_key = os.getenv('GROQ_API_KEY')
+    groq_api_key = st.secrets.get("GROQ_API_KEY") or os.getenv('GROQ_API_KEY')
     
     if not groq_api_key:
         return "⚠️ AI Tutor is not configured. Please set your GROQ_API_KEY in Streamlit secrets."
