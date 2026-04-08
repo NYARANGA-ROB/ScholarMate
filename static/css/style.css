@@ -10,6 +10,7 @@
 [data-theme="light"] {
     --bg-primary: #f7fafc;
     --text-primary: #1a202c;
+    
     --bg-secondary: #edf2f7;
     --text-secondary: #4a5568;
 }
