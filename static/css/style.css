@@ -1,7 +1,6 @@
 /* Dark mode styles */
 [data-theme="dark"] {
     --bg-primary: #1a202c;
-    
     --text-primary: #f7fafc;
     --bg-secondary: #2d3748;
     --text-secondary: #e2e8f0;
