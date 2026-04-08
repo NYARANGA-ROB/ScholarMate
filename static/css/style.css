@@ -24,6 +24,7 @@ body {
 /* Prose styles for markdown content */
 .prose {
     max-width: 65ch;
+    
     color: var(--text-primary);
 }
 
