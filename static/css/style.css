@@ -52,6 +52,7 @@ body {
 
 .prose code {
     background-color: var(--bg-secondary);
+    
     color: var(--text-primary);
     padding: 0.2em 0.4em;
     border-radius: 0.25em;
