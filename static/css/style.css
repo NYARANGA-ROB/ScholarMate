@@ -30,6 +30,7 @@ body {
 .prose h1, .prose h2, .prose h3, .prose h4 {
     color: var(--text-primary);
     margin-top: 2em;
+    
     margin-bottom: 1em;
     font-weight: 600;
 }
