@@ -9,7 +9,6 @@ Streamlit uses a completely different architecture:
 **You can't have the same UI in Streamlit** - it's a fundamental limitation.
 
 ---
-
 ## ✅ **Recommended Solutions**
 
 ### **Option 1: Hybrid Approach (Best of Both Worlds)**
