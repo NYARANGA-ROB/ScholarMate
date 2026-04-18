@@ -17,7 +17,6 @@
 /* Base styles */
 body {
     background-color: var(--bg-primary);
-    
     color: var(--text-primary);
 }
 
