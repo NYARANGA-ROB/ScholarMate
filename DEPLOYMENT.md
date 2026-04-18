@@ -1,5 +1,4 @@
 # ScholarMate Deployment Guide
-
 ## Overview
 This guide covers deploying the enhanced ScholarMate Intelligent Tutoring System with ML/NLP capabilities, adaptive learning, and production-ready infrastructure.
 
