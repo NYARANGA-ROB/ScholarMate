@@ -26,7 +26,6 @@ This guide helps you migrate from the basic ScholarMate application to the enhan
 - Redis 7+ (required for Celery)
 - 4GB+ RAM (8GB+ recommended)
 - ML/NLP libraries (transformers, torch, scikit-learn)
-
 ## Step-by-Step Migration
 
 ### Step 1: Backup Current System
