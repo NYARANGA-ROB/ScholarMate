@@ -7,7 +7,6 @@ from flask_login import login_required, current_user
 from datetime import datetime, timedelta
 from sqlalchemy import func
 import json
-
 from models import (
     db, User, Session, Quiz, Question, QuizAttempt, Answer,
     LearningPath, PerformanceMetric, StudyMaterial
