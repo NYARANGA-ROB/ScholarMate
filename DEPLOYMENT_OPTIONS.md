@@ -23,7 +23,6 @@ py -3.11 app.py
 # Run Streamlit analytics on port 8501
 py -3.11 -m streamlit run analytics_streamlit.py
 ```
-
 #### Benefits:
 - ✅ Keep your beautiful Flask UI
 - ✅ Add powerful analytics with Streamlit
