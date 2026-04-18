@@ -35,7 +35,6 @@ COPY --from=builder /root/.local /root/.local
 
 # Copy application code
 COPY . .
-
 # Set environment variables
 ENV PYTHONUNBUFFERED=1
 ENV FLASK_APP=app.py
