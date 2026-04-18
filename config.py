@@ -3,7 +3,6 @@ Configuration settings for ScholarMate ITS
 """
 import os
 from datetime import timedelta
-
 class Config:
     """Base configuration"""
     # Flask
