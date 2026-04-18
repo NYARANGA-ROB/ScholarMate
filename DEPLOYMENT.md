@@ -15,7 +15,6 @@ This guide covers deploying the enhanced ScholarMate Intelligent Tutoring System
   - Get from: https://console.groq.com/
   - Set as environment variable: `GROQ_API_KEY`
 ## Local Development Setup
-
 ### 1. Clone and Setup Environment
 
 ```bash
