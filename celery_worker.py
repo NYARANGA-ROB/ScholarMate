@@ -7,7 +7,6 @@ from celery import Celery
 from datetime import datetime, timedelta
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-
 # Initialize Celery
 celery = Celery('scholarmate')
 celery.conf.update(
