@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', function() {
     function appendMessage(content, isAI) {
         const messageDiv = document.createElement('div');
         messageDiv.className = `flex ${isAI ? 'justify-start' : 'justify-end'} mb-4`;
-        
         const innerDiv = document.createElement('div');
         innerDiv.className = `max-w-3/4 rounded-lg p-3 ${
             isAI ? 'bg-blue-100 dark:bg-blue-900' : 'bg-green-100 dark:bg-green-900'
