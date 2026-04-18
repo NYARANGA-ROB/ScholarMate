@@ -166,7 +166,6 @@ let currentData = null;
 // Load analytics data
 async function loadAnalytics() {
     const days = document.getElementById('timeRange').value;
-    
     try {
         const response = await fetch(`/api/analytics/progress?days=${days}`);
         const data = await response.json();
