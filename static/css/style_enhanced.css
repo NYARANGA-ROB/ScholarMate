@@ -50,6 +50,7 @@ body::before {
     pointer-events: none;
     z-index: 0;
 }
+
 /* Glass Morphism Effect */
 .glass-effect {
     background: rgba(30, 41, 59, 0.7);
