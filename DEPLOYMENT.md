@@ -14,7 +14,6 @@ This guide covers deploying the enhanced ScholarMate Intelligent Tutoring System
 - **Groq API Key**: Required for DeepSeek-R1 model access
   - Get from: https://console.groq.com/
   - Set as environment variable: `GROQ_API_KEY`
-
 ## Local Development Setup
 
 ### 1. Clone and Setup Environment
