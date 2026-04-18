@@ -17,7 +17,6 @@ from ml_services import (
 
 api_bp = Blueprint('api', __name__, url_prefix='/api')
 
-
 # ==================== Quiz API ====================
 
 @api_bp.route('/quiz/generate', methods=['POST'])
