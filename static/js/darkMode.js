@@ -5,7 +5,6 @@ function toggleTheme() {
     html.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
 }
-
 // Set theme on load
 document.addEventListener('DOMContentLoaded', () => {
     const savedTheme = localStorage.getItem('theme') || 'light';
