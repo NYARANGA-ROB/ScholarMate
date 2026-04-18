@@ -1,7 +1,6 @@
 /**
  * ScholarMate - Enhanced UI Animations and Interactions
  */
-
 // Fade in elements on scroll
 const observerOptions = {
     threshold: 0.1,
