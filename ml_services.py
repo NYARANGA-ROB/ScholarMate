@@ -35,7 +35,6 @@ class NLPQuestionAnsweringEngine:
     NLP-powered question answering using Transformer models
     Supports both local models (BERT, T5) and API-based models (Groq)
     """
-    
     def __init__(self, model_name: str = "deepset/bert-base-cased-squad2", use_local: bool = False):
         self.use_local = use_local and TRANSFORMERS_AVAILABLE
         self.model_name = model_name
