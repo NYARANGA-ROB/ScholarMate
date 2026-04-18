@@ -8,7 +8,6 @@
 
 > If you find this project helpful, please consider ⭐ [starring the repository](https://github.com/yourusername/scholarmate)!
 ---
-
 **ScholarMate** is a fully stack AI project and intelligent tutoring platform that leverages advanced AI technology to provide personalized learning experiences across various subjects and educational levels. Powered by the DeepSeek-R1 model, it delivers high-quality, contextual responses optimized for educational purposes.
 
 ---
