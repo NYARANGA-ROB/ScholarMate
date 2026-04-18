@@ -78,7 +78,6 @@ def inject_subjects():
     return dict(subjects=SUBJECTS)
 
 # ==================== Health Check ====================
-
 @app.route('/health')
 def health_check():
     """Health check endpoint for monitoring"""
