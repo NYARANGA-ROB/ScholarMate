@@ -6,7 +6,6 @@ from datetime import timedelta
 
 class Config:
     """Base configuration"""
-    
     # Flask
     SECRET_KEY = os.getenv('SECRET_KEY', 'ff18e9b506ff42a1922312c08094f705eb20a46d4a306ba523b495d335e26614')
     FLASK_APP = os.getenv('FLASK_APP', 'app.py')
