@@ -13,7 +13,6 @@ from groq import Groq
 
 # Load environment variables
 load_dotenv()
-
 # Import configuration
 from config import get_config
 
