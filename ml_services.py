@@ -23,7 +23,6 @@ try:
 except ImportError:
     TRANSFORMERS_AVAILABLE = False
     print("Warning: Transformers not available. Install with: pip install transformers torch sentence-transformers")
-
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
