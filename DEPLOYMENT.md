@@ -9,7 +9,6 @@ This guide covers deploying the enhanced ScholarMate Intelligent Tutoring System
 - Docker & Docker Compose (for containerized deployment)
 - 4GB+ RAM (8GB+ recommended for ML models)
 - 10GB+ disk space
-
 ### API Keys
 - **Groq API Key**: Required for DeepSeek-R1 model access
   - Get from: https://console.groq.com/
