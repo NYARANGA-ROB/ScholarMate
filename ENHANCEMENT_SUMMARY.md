@@ -2,7 +2,6 @@
 
 ## 🎯 Project Completion Status: ✅ 100%
 This document summarizes all enhancements made to transform ScholarMate from a basic tutoring application into a comprehensive Intelligent Tutoring System (ITS) that fully meets the academic project requirements.
-
 ---
 
 ## 📊 Requirements Compliance Matrix
