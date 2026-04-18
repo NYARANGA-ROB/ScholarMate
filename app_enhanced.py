@@ -37,7 +37,6 @@ CORS(app)
 # Initialize login manager
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'
-
 # Register API blueprint
 app.register_blueprint(api_bp)
 
