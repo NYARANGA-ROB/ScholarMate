@@ -2,7 +2,6 @@
 ## Overview
 This guide covers deploying the enhanced ScholarMate Intelligent Tutoring System with ML/NLP capabilities, adaptive learning, and production-ready infrastructure.
 ## Prerequisites
-
 ### System Requirements
 - Python 3.11+
 - PostgreSQL 15+ or MongoDB 6+
