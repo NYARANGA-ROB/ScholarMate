@@ -2,7 +2,6 @@
 
 ## Overview
 This guide helps you migrate from the basic ScholarMate application to the enhanced Intelligent Tutoring System with ML/NLP capabilities, adaptive learning, and automated assessment.
-
 ## Pre-Migration Checklist
 
 - [ ] Backup existing database
