@@ -62,7 +62,6 @@ class NLPQuestionAnsweringEngine:
         """
         if not self.use_local:
             return {"error": "Local model not available"}
-        
         try:
             result = self.qa_pipeline(question=question, context=context)
             return {
