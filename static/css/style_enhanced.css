@@ -70,7 +70,6 @@ body::before {
     position: relative;
     overflow: hidden;
 }
-
 .card-enhanced::before {
     content: '';
     position: absolute;
