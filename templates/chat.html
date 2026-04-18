@@ -61,7 +61,6 @@ async function sendMessage(event) {
     const input = document.getElementById('messageInput');
     const message = input.value.trim();
     if (!message) return;
-
     // Display user message
     appendMessage(message, true);
     input.value = '';
