@@ -34,7 +34,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
-
 // Loading state for buttons
 function addLoadingState(button) {
     const originalText = button.innerHTML;
