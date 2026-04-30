@@ -22,7 +22,6 @@ const fadeInObserver = new IntersectionObserver((entries) => {
 
 // Observe all cards and sections
 document.addEventListener('DOMContentLoaded', () => {
-    
     const elements = document.querySelectorAll('.card-enhanced, .section-animate');
     
     elements.forEach(el => fadeInObserver.observe(el));
