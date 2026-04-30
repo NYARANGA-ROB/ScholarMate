@@ -14,6 +14,7 @@ const fadeInObserver = new IntersectionObserver((entries) => {
             entry.target.classList.add('fade-in');
             
             fadeInObserver.unobserve(entry.target);
+            
         }
     });
     
