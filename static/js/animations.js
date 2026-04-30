@@ -5,6 +5,7 @@
 const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
+    
 };
 const fadeInObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
