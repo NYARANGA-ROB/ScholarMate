@@ -13,6 +13,7 @@ const fadeInObserver = new IntersectionObserver((entries) => {
             fadeInObserver.unobserve(entry.target);
         }
     });
+    
 }, observerOptions);
 
 // Observe all cards and sections
