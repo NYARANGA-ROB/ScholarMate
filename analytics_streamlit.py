@@ -35,6 +35,7 @@ def get_db_connection():
     conn = sqlite3.connect('scholarmate.db')
     return conn
 
+
 # Load data
 @st.cache_data
 def load_sessions():
