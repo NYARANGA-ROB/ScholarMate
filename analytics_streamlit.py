@@ -20,6 +20,7 @@ st.set_page_config(
 # Custom CSS to match Flask theme
 st.markdown("""
 <style>
+
     .main {
         background-color: #0f172a;
     }
