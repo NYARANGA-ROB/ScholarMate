@@ -18,6 +18,7 @@ This guide covers deploying the enhanced ScholarMate Intelligent Tutoring System
 ## Local Development Setup
 ### 1. Clone and Setup Environment
 
+
 ```bash
 git clone https://github.com/yourusername/scholarmate.git
 cd scholarmate
