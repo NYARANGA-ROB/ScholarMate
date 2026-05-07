@@ -16,6 +16,7 @@ st.set_page_config(
     layout="wide"
 )
 
+
 # Custom CSS to match Flask theme
 st.markdown("""
 <style>
