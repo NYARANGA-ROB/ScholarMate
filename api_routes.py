@@ -3,6 +3,7 @@ API Routes for ML/AI features
 Includes quiz generation, recommendations, and analytics endpoints
 """
 from flask import Blueprint, request, jsonify
+
 from flask_login import login_required, current_user
 from datetime import datetime, timedelta
 from sqlalchemy import func
