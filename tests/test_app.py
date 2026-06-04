@@ -9,6 +9,7 @@ class TestApp(unittest.TestCase):
         self.client = app.test_client()
         with app.app_context():
             db.create_all()
+
     
     def tearDown(self):
         with app.app_context():
