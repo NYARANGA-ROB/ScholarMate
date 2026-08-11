@@ -4,7 +4,6 @@ Companion app for analytics while keeping Flask UI for main app
 
 """
 import streamlit as st
-
 import sqlite3
 
 import pandas as pd
