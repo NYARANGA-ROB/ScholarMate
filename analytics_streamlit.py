@@ -1,6 +1,7 @@
 """
 ScholarMate Analytics Dashboard - Streamlit
 Companion app for analytics while keeping Flask UI for main app
+
 """
 import streamlit as st
 import sqlite3
