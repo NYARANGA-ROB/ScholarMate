@@ -4,6 +4,7 @@ from flask_login import LoginManager, UserMixin, login_user, login_required, log
 from flask_migrate import Migrate
 
 from werkzeug.security import generate_password_hash, check_password_hash
+
 from datetime import datetime
 import os
 from dotenv import load_dotenv
