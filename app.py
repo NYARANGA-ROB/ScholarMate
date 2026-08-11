@@ -6,6 +6,7 @@ from flask_migrate import Migrate
 from werkzeug.security import generate_password_hash, check_password_hash
 
 from datetime import datetime
+
 import os
 from dotenv import load_dotenv
 from groq import Groq
