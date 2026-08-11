@@ -10,6 +10,7 @@ from datetime import datetime
 import os
 
 from dotenv import load_dotenv
+
 from groq import Groq
 
 # Load environment variables
