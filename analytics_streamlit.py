@@ -6,6 +6,7 @@ Companion app for analytics while keeping Flask UI for main app
 import streamlit as st
 
 import sqlite3
+
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
