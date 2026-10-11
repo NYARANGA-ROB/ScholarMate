@@ -5,6 +5,7 @@ This guide covers deploying the enhanced ScholarMate Intelligent Tutoring System
 ### System Requirements
 
 
+
 - Python 3.11+
 - PostgreSQL 15+ or MongoDB 6+
 - Redis 7+
