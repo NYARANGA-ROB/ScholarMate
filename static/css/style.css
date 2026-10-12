@@ -6,7 +6,6 @@
     --text-secondary: #e2e8f0;
 }
 
-
 /* Light mode styles */
 [data-theme="light"] {
     --bg-primary: #f7fafc;
