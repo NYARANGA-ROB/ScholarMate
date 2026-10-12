@@ -15,6 +15,7 @@
     --text-secondary: #4a5568;
 }
 
+
 /* Base styles */
 body {
     background-color: var(--bg-primary);
